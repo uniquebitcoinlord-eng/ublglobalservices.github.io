@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UBL Global Services - Buy and sell USDT and Bitcoin securely.">
+  <title>UBL Global Services | Buy USDT & BTC</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Arial,Helvetica,sans-serif;background:#07111f;color:#fff;line-height:1.6}
+    header{padding:18px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1d3048}
+    .logo{font-size:22px;font-weight:800;color:#19d3ae}
+    nav a{color:#dce7f5;text-decoration:none;margin-left:22px}
+    .hero{padding:75px 7% 55px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+    .badge{display:inline-block;background:#103a3b;color:#5ff1cf;padding:7px 12px;border-radius:20px;font-size:13px;margin-bottom:15px}
+    h1{font-size:clamp(38px,6vw,68px);line-height:1.05;margin-bottom:18px}
+    .hero p{color:#b8c7d9;font-size:18px;max-width:650px}
+    .btn{display:inline-block;margin-top:25px;background:#19d3ae;color:#03130f;padding:14px 22px;border-radius:10px;text-decoration:none;font-weight:800}
+    .card{background:#0d1b2d;border:1px solid #1d3048;border-radius:18px;padding:26px;box-shadow:0 20px 50px #0005}
+    .rate{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid #20334b}
+    .coin{font-weight:800}.green{color:#19d3ae}
+    section{padding:55px 7%}
+    .title{text-align:center;font-size:34px;margin-bottom:28px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .feature{background:#0b1829;padding:25px;border-radius:15px;border:1px solid #1b2d44}
+    .feature h3{margin:10px 0}.feature p{color:#aebed0}
+    .trade{max-width:700px;margin:auto}
+    label{display:block;margin:15px 0 7px;color:#d9e5f2}
+    input,select{width:100%;padding:14px;border-radius:9px;border:1px solid #2a405d;background:#07111f;color:#fff}
+    .calc{margin-top:20px;background:#07111f;padding:18px;border-radius:10px;color:#cfe0ef}
+    footer{padding:30px 7%;border-top:1px solid #1d3048;color:#91a5ba;text-align:center}
+    @media(max-width:800px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}nav{display:none}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">UBL GLOBAL SERVICES</div>
+  <nav><a href="#services">Services</a><a href="#trade">Trade</a><a href="#contact">Contact</a></nav>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <span class="badge">CRYPTO • BTC • USDT</span>
+    <h1>Buy USDT & Bitcoin with confidence.</h1>
+    <p>UBL Global Services makes it simple to request BTC and USDT trades. Choose your asset, enter your amount and contact our team to complete your order.</p>
+    <a class="btn" href="#trade">Start a Trade</a>
+  </div>
+  <div class="card">
+    <h2>Market Watch</h2>
+    <div class="rate"><span class="coin">Bitcoin (BTC)</span><span id="btc">Loading...</span></div>
+    <div class="rate"><span class="coin">Tether (USDT)</span><span id="usdt">Loading...</span></div>
+    <p style="color:#8fa5bc;margin-top:15px;font-size:13px">Indicative market prices. Your final trade rate is confirmed before payment.</p>
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="title">Our Services</h2>
+  <div class="grid">
+    <div class="feature"><div>₿</div><h3>Buy Bitcoin</h3><p>Request BTC and receive your confirmed payment instructions.</p></div>
+    <div class="feature"><div>₮</div><h3>Buy USDT</h3><p>Request USDT and specify the amount you want to purchase.</p></div>
+    <div class="feature"><div>⚡</div><h3>Fast Support</h3><p>Speak directly with UBL Global Services through WhatsApp.</p></div>
+  </div>
+</section>
+
+<section id="trade">
+  <div class="card trade">
+    <h2>Request a Trade</h2>
+    <form id="tradeForm">
+      <label>Asset</label>
+      <select id="asset"><option>USDT</option><option>BTC</option></select>
+      <label>Amount</label>
+      <input id="amount" type="number" min="0" step="any" placeholder="Enter amount" required>
+      <label>Your name</label>
+      <input id="name" type="text" placeholder="Enter your name" required>
+      <label>Wallet address (optional)</label>
+      <input id="wallet" type="text" placeholder="Enter receiving wallet address">
+      <div class="calc">Order request: <strong id="summary">Select an asset and amount</strong></div>
+      <button class="btn" type="submit" style="border:0;cursor:pointer;width:100%">Send Order on WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="title">Contact UBL Global Services</h2>
+  <p style="text-align:center;color:#b8c7d9">WhatsApp: <strong>ADD YOUR WHATSAPP NUMBER</strong><br>Email: <strong>ADD YOUR EMAIL</strong></p>
+</section>
+</main>
+
+<footer>© 2026 UBL Global Services. All rights reserved.</footer>
+
+<script>
+const WHATSAPP_NUMBER = "234XXXXXXXXXX"; // Replace with your WhatsApp number, e.g. 2349036880048
+const asset = document.getElementById("asset");
+const amount = document.getElementById("amount");
+const summary = document.getElementById("summary");
+
+function updateSummary(){
+  summary.textContent = amount.value ? `Buy ${amount.value} ${asset.value}` : "Select an asset and amount";
+}
+asset.addEventListener("change", updateSummary);
+amount.addEventListener("input", updateSummary);
+
+document.getElementById("tradeForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const msg = `Hello UBL Global Services,%0A%0AI want to buy ${amount.value} ${asset.value}.%0AName: ${document.getElementById("name").value}%0AWallet: ${document.getElementById("wallet").value || "Will provide"}%0A%0APlease send me the current rate and payment instructions.`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
+});
+
+// Public market data for display only.
+fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,tether&vs_currencies=usd")
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById("btc").textContent = "$" + Number(d.bitcoin.usd).toLocaleString();
+    document.getElementById("usdt").textContent = "$" + Number(d.tether.usd).toLocaleString();
+  })
+  .catch(() => {
+    document.getElementById("btc").textContent = "Unavailable";
+    document.getElementById("usdt").textContent = "Unavailable";
+  });
+</script>
+</body>
+</html>
